@@ -77,7 +77,7 @@ class Graph:
         """
         return self.edgeList
 
-    def visualize(self):
+    def display(self):
         picture.view()
 
     def __contains__(self, n):
@@ -125,7 +125,7 @@ class Graph:
                     if desirable in possible_tuples:
                         self.addEdge(tuple, desirable, movement)
 
-        a.visualize()
+        a.display()
 
 
 if __name__ == '__main__':
