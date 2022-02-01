@@ -13,7 +13,7 @@ class Queue:
         return self.items == []
 
     def enqueue(self, item):
-        self.items.insert(0,item)
+        self.items.insert(0, item)
 
     def dequeue(self):
         return self.items.pop()
@@ -306,13 +306,13 @@ class DFSGraph(Graph):
                 if x in all_tuples and x != tuple:
                     self.addEdge(tuple, x)   
             if tuple[0]+tuple[1] >= first_canister:
-                y = (first_canister, tuple[1]-first_canister+tuple[0])             # pour over from 2 to 1
-                if y in all_tuples and y != tuple:
-                    self.addEdge(tuple, y)         
+                x = (first_canister, tuple[1]-first_canister+tuple[0])             # pour over from 2 to 1
+                if x in all_tuples and x != tuple:
+                    self.addEdge(tuple, x)         
             if tuple[0]+tuple[1] >= second_canister:
-                z = (tuple[0]-second_canister+tuple[1], second_canister)             # pour over from 1 to 2
-                if z in all_tuples and z != tuple:
-                    self.addEdge(tuple, z)        
+                x = (tuple[0]-second_canister+tuple[1], second_canister)             # pour over from 1 to 2
+                if x in all_tuples and x != tuple:
+                    self.addEdge(tuple, x)        
             
             if x_1 in all_tuples and x_1 != tuple:
                 self.addEdge(tuple, x_1)
