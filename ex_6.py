@@ -86,7 +86,6 @@ class Graph:
     def __iter__(self):
         return iter(self.vertList.values())
 
-
     def miss_can(self, initial_miss, initial_can):
         """
         Function creates list of tuples (size=3) that define situation at beginning. First coordinate is a number of
@@ -112,19 +111,19 @@ class Graph:
                 if not (initial_miss - tuples[0] >= initial_can - tuples[1] and tuples[0] >= tuples[1]):
                     possible_tuples.remove(tuples)
 
-        moves = [(0, 1, 1), (0, 2, 1), (1, 0, 1), (1, 1, 1), (2, 0, 1)]
+        movements = [(0, 1, 1), (0, 2, 1), (1, 0, 1), (1, 1, 1), (2, 0, 1)]
 
         for tuple in possible_tuples:
-            for move in moves:
+            for movement in movements:
                 if tuple[2] == 1:
-                    wanted = (tuple[0] - move[0], tuple[1] - move[1], tuple[2] - move[2])
-                    if wanted in possible_tuples:
-                        self.addEdge(tuple, wanted, move)
+                    desirable = (tuple[0] - movement[0], tuple[1] - movement[1], tuple[2] - movement[2])
+                    if desirable in possible_tuples:
+                        self.addEdge(tuple, desirable, movement)
 
                 if tuple[2] == 0:
-                    wanted = (tuple[0] + move[0], tuple[1] + move[1], tuple[2] + move[2])
-                    if wanted in possible_tuples:
-                        self.addEdge(tuple, wanted, move)
+                    desirable = (tuple[0] + movement[0], tuple[1] + movement[1], tuple[2] + movement[2])
+                    if desirable in possible_tuples:
+                        self.addEdge(tuple, desirable, movement)
 
         a.visualize()
 
