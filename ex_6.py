@@ -87,43 +87,43 @@ class Graph:
         return iter(self.vertList.values())
 
 
-    def miss_can(self, a_m, a_c):
+    def miss_can(self, initial_miss, initial_can):
         """
         Function creates list of tuples (size=3) that define situation at beginning. First coordinate is a number of
         missionaries, second cannibals, third is the coast (0 or 1). Then checks task conditions and possible options
         to move. Then creates nodes which are the keys do the tuple and creates edge and The graph.
-        :param: a_m - missionaries
-        :param: all_c - cannibals
+        :param: initial_miss - missionaries
+        :param: inital_can - cannibals
         """
-        a_tuples = []
-        for m in range(1, a_m + 1):
+        possible_tuples = []
+        for m in range(1, initial_miss + 1):
             for c in range(0, m + 1):
                 for b in range(0, 2):
                     tupl = (m, c, b)
-                    a_tuples.append(tupl)
+                    possible_tuples.append(tupl)
         m = 0
-        for c in range(0, a_c + 1):
+        for c in range(0, initial_can + 1):
             for b in range(0, 2):
                 tupl = (m, c, b)
-                a_tuples.append(tupl)
+                possible_tuples.append(tupl)
 
-        for tuples in a_tuples:
+        for tuples in possible_tuples:
             if tuples[0] != 0 and tuples[0] != 3:
-                if not (a_m - tuples[0] >= a_c - tuples[1] and tuples[0] >= tuples[1]):
-                    a_tuples.remove(tuples)
+                if not (initial_miss - tuples[0] >= initial_can - tuples[1] and tuples[0] >= tuples[1]):
+                    possible_tuples.remove(tuples)
 
         moves = [(0, 1, 1), (0, 2, 1), (1, 0, 1), (1, 1, 1), (2, 0, 1)]
 
-        for tuple in a_tuples:
+        for tuple in possible_tuples:
             for move in moves:
                 if tuple[2] == 1:
                     wanted = (tuple[0] - move[0], tuple[1] - move[1], tuple[2] - move[2])
-                    if wanted in a_tuples:
+                    if wanted in possible_tuples:
                         self.addEdge(tuple, wanted, move)
 
                 if tuple[2] == 0:
                     wanted = (tuple[0] + move[0], tuple[1] + move[1], tuple[2] + move[2])
-                    if wanted in a_tuples:
+                    if wanted in possible_tuples:
                         self.addEdge(tuple, wanted, move)
 
         a.visualize()
