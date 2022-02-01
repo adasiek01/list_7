@@ -212,7 +212,7 @@ class Graph:
         """
         return self.edgeList
 
-    def visualize(self):
+    def display(self):
         picture.view()
 
     def __contains__(self, n):
@@ -316,7 +316,7 @@ if __name__ == '__main__':
     d.addVertices([2, 1, 3, 9, 5, 7])
     d.addEdges([(1, 2, 5), (2, 3, 3), (5, 9, 1), (1, 5, 7), (9, 7, 1), (1, 7, 8), (2, 5, 3), (2, 7, 14), (2, 1, 2)])
     d.sorting(1)
-    d.visualize()
+    d.display()
     a = d.getVertex(2)
     dijkstra(d, a)
 

@@ -278,7 +278,7 @@ class DFSGraph(Graph):
         picture2.view()
         print(list_1)
 
-    def water(self, first_canister=3, second_canister=4, result=2):
+    def canister(self, first_canister=3, second_canister=4, result=2):
         """
         Function creates list of tuples (size=2). First coordinate = amount of water in first canister,
         second coordinate = amount of water in second canister. Checks the options and creates edges and the graph.
@@ -365,4 +365,4 @@ def dijkstra(aGraph, start, result):
 
 if __name__ == '__main__':
     d = DFSGraph()
-    d.water(5, 6, 3)
+    d.canister(5, 6, 3)
